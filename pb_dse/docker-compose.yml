@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    pb_dse:
+        tty: true
+        build: .
+        command: 
+          sh -c "python3 manage.py collectstatic --noinput && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8008"
+        volumes:
+            - .:/apps
+        ports:
+            - "8008:8008"
+        depends_on:
+          - redis
+        links:
+          - redis
+        
+    redis:
+      image: redis:latest
+#       container_name: redis
+    celery:
+      build: .
+      volumes:
+          - .:/src
+#       container_name: celery
+      command: celery -A Models worker -l info
+      links:
+         - redis
+    
