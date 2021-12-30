@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% csrf_token %}
+<form action="endpoint_name",method="POST">
+  <label for="Dataset_Name">Eenter_Dataset_Name:</label><br>
+  <input type="str" id="Dataset_Name" name="Dataset_Name"><br>
+  <label for="Target">Target:</label><br>
+  <input type="text" id="Target" name="Target"><br><br>
+  <label for="Sklearn">Library:</label><br>
+  <input type="text" id="Sklearn" name="Sklearn" ><br><br>
+  <label for="Algorithm">Model_name:</label><br>
+  <input type="text" id="Algorithm" name="Algorithm"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
